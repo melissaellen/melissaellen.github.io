@@ -1,1 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Melissa — UX Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0A0A0B;
+    --surface: #111113;
+    --surface2: #17171A;
+    --ink: #E8E4DC;
+    --muted: #6B6870;
+    --faint: #2A2A2E;
+    --accent: #C8A97E;
+    --teal: #4ECDC4;
+    --border: rgba(232,228,220,0.07);
+    --border-strong: rgba(232,228,220,0.14);
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 6%; height: 64px;
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,11,0.88);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 600;
+    color: var(--ink); text-decoration: none;
+    letter-spacing: 0.02em;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-mark { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.75rem; font-weight: 400; color: var(--muted);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 0.1em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta {
+    background: transparent; color: var(--accent);
+    padding: 0.48rem 1.2rem; border-radius: 2px;
+    font-size: 0.75rem; font-weight: 500; text-decoration: none;
+    border: 1px solid rgba(200,169,126,0.4);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  .hero {
+    padding: 8rem 6% 6rem;
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 380px;
+    gap: 5rem; align-items: end;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--accent); }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 7vw, 7.5rem);
+    font-weight: 300; line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero h1 .ghost {
+    -webkit-text-stroke: 1px rgba(232,228,220,0.18);
+    color: transparent; display: block;
+  }
+  .hero-sub {
+    font-size: 0.95rem; color: var(--muted);
+    max-width: 420px; line-height: 1.85; margin-bottom: 2.5rem; font-weight: 300;
+  }
+  .hero-actions { display: flex; gap: 1rem; }
+  .btn-primary {
+    background: var(--accent); color: var(--bg);
+    padding: 0.85rem 1.9rem; border-radius: 2px;
+    font-size: 0.78rem; font-weight: 500; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    transition: opacity 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--muted);
+    padding: 0.85rem 1.7rem; border-radius: 2px;
+    font-size: 0.78rem; font-weight: 400; text-decoration: none;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border: 1px solid var(--faint);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--ink); border-color: var(--border-strong); }
+
+  .hero-right { align-self: end; padding-bottom: 0.5rem; }
+  .stat-row {
+    display: flex; align-items: baseline; justify-content: space-between;
+    padding: 1.1rem 0; border-bottom: 1px solid var(--border);
+  }
+  .stat-row:first-child { border-top: 1px solid var(--border); }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300; color: var(--ink); line-height: 1;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.06em; }
+  .avail-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; color: var(--teal); letter-spacing: 0.06em;
+  }
+  .avail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.25} }
+
+  .marquee-wrap {
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    overflow: hidden; padding: 11px 0;
+  }
+  .marquee-track { display: flex; animation: marquee 28s linear infinite; width: max-content; }
+  .marquee-item {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 0 2rem; white-space: nowrap; color: var(--muted);
+  }
+  .marquee-item .sep { color: var(--accent); margin: 0 0.3rem; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .section { padding: 6rem 6%; max-width: 1280px; margin: 0 auto; }
+  .section-head {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 4rem; flex-wrap: wrap; gap: 1rem;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 4vw, 3.8rem);
+    font-weight: 300; line-height: 1; letter-spacing: -0.02em;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .projects-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 1px; border: 1px solid var(--border);
+    background: var(--border);
+  }
+  .proj-card {
+    background: var(--surface);
+    overflow: hidden; text-decoration: none; color: inherit; display: block;
+    transition: background 0.25s;
+    border: none;
+  }
+  .proj-card:hover { background: var(--surface2); }
+  .proj-card.tall { grid-row: span 2; }
+
+  .proj-img {
+    width: 100%; min-height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; border-bottom: 1px solid var(--border);
+    position: relative; transition: opacity 0.25s;
+  }
+  .proj-card.tall .proj-img { min-height: 280px; }
+  .proj-img-label {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--accent); color: var(--bg);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 1px;
+  }
+  .proj-body { padding: 1.5rem 1.75rem; }
+  .proj-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.9rem; }
+  .ptag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 10px; border-radius: 1px;
+    border: 1px solid var(--faint); color: var(--muted);
+  }
+  .proj-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300; line-height: 1.25;
+    margin-bottom: 0.6rem; color: var(--ink);
+  }
+  .proj-card.tall .proj-title { font-size: 1.7rem; }
+  .proj-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+  .proj-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.75rem; border-top: 1px solid var(--border);
+  }
+  .proj-year { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; }
+  .proj-arrow { font-size: 0.85rem; color: var(--muted); transition: color 0.2s, transform 0.2s; }
+  .proj-card:hover .proj-arrow { color: var(--accent); transform: translateX(3px); }
+
+  .ib-1 { background: #14121C; }
+  .ib-2 { background: #1A1212; }
+  .ib-3 { background: #101A17; }
+  .ib-4 { background: #101520; }
+  .ib-5 { background: #1C1418; }
+  .ib-6 { background: #181614; }
+
+  .about-wrap { display: grid; grid-template-columns: 320px 1fr; gap: 5rem; align-items: start; }
+  .about-photo {
+    aspect-ratio: 3/4; border-radius: 2px;
+    background: var(--surface2); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-photo-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .about-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3vw, 2.9rem);
+    font-weight: 300; line-height: 1.15;
+    letter-spacing: -0.02em; margin-bottom: 2rem;
+  }
+  .about-tagline em { font-style: italic; color: var(--accent); }
+  .about-bio { font-size: 0.93rem; color: var(--muted); line-height: 1.9; font-weight: 300; margin-bottom: 1.5rem; }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2rem; }
+  .skill {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.08em;
+    padding: 6px 14px; border-radius: 1px;
+    border: 1px solid var(--faint); color: var(--muted); text-transform: uppercase;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .skill:hover { border-color: var(--accent); color: var(--accent); }
+
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--border); gap: 1px; border: 1px solid var(--border); }
+  .step { padding: 2.5rem 2rem; background: var(--surface); transition: background 0.2s; }
+  .step:hover { background: var(--surface2); }
+  .step-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.5rem;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 300; color: var(--ink); margin-bottom: 0.75rem;
+  }
+  .step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+  .cta-banner {
+    margin: 6rem 0 0;
+    background: var(--surface);
+    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    padding: 7rem 6%;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; gap: 4rem;
+  }
+  .cta-mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .cta-mono::before { content: ''; display: block; width: 28px; height: 1px; background: var(--accent); }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300; line-height: 0.95; letter-spacing: -0.03em;
+  }
+  .cta-title em { font-style: italic; color: var(--accent); }
+  .cta-actions { display: flex; flex-direction: column; gap: 0.75rem; min-width: 200px; }
+  .btn-accent {
+    background: var(--accent); color: var(--bg);
+    padding: 0.9rem 2rem; border-radius: 2px;
+    font-size: 0.78rem; font-weight: 500; text-decoration: none; text-align: center;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    transition: opacity 0.2s;
+  }
+  .btn-accent:hover { opacity: 0.85; }
+  .btn-ghost-dark {
+    background: transparent; color: var(--muted);
+    padding: 0.9rem 2rem; border-radius: 2px;
+    font-size: 0.78rem; font-weight: 400; text-decoration: none; text-align: center;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border: 1px solid var(--faint);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .btn-ghost-dark:hover { color: var(--ink); border-color: var(--border-strong); }
+
+  footer {
+    border-top: 1px solid var(--border); padding: 2rem 6%;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; }
+  .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 300; }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--muted);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+
+  .fade-up { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 6% 4rem; }
+    .hero-right { display: none; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .proj-card.tall { grid-row: span 1; }
+    .about-wrap { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .cta-banner { grid-template-columns: 1fr; padding: 4rem 6%; gap: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo"><span class="logo-mark"></span>Melissa</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#process">Process</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Contact</a>
+</nav>
+
+<section class="hero fade-up">
+  <div>
+    <div class="hero-eyebrow">UX Designer &amp; Researcher</div>
+    <h1>
+      Crafting<br>
+      <em>experiences</em><br>
+      <span class="ghost">people love.</span>
+    </h1>
+    <p class="hero-sub">I design digital products that are intuitive, considered, and human — turning complexity into clarity through research and obsessive craft.</p>
+    <div class="hero-actions">
+      <a href="#work" class="btn-primary">View work</a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <div class="stat-row"><span class="stat-label">Years of experience</span><span class="stat-num">5+</span></div>
+      <div class="stat-row"><span class="stat-label">Projects shipped</span><span class="stat-num">30+</span></div>
+      <div class="stat-row"><span class="stat-label">Clients served</span><span class="stat-num">12</span></div>
+      <div class="stat-row"><span class="stat-label">Based in</span><span class="stat-num" style="font-size:1.1rem;">[Your City]</span></div>
+    </div>
+    <div class="avail-badge"><span class="avail-dot"></span> Available for new projects</div>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">User Research <span class="sep">/</span></span>
+    <span class="marquee-item">Interaction Design <span class="sep">/</span></span>
+    <span class="marquee-item">Design Systems <span class="sep">/</span></span>
+    <span class="marquee-item">Prototyping <span class="sep">/</span></span>
+    <span class="marquee-item">Usability Testing <span class="sep">/</span></span>
+    <span class="marquee-item">Journey Mapping <span class="sep">/</span></span>
+    <span class="marquee-item">Accessibility <span class="sep">/</span></span>
+    <span class="marquee-item">Figma <span class="sep">/</span></span>
+    <span class="marquee-item">User Research <span class="sep">/</span></span>
+    <span class="marquee-item">Interaction Design <span class="sep">/</span></span>
+    <span class="marquee-item">Design Systems <span class="sep">/</span></span>
+    <span class="marquee-item">Prototyping <span class="sep">/</span></span>
+    <span class="marquee-item">Usability Testing <span class="sep">/</span></span>
+    <span class="marquee-item">Journey Mapping <span class="sep">/</span></span>
+    <span class="marquee-item">Accessibility <span class="sep">/</span></span>
+    <span class="marquee-item">Figma <span class="sep">/</span></span>
+  </div>
+</div>
+
+<section class="section fade-up" id="work">
+  <div class="section-head">
+    <div>
+      <div class="section-label">01 &mdash; Work</div>
+      <h2 class="section-title">Selected <em>projects</em></h2>
+    </div>
+    <a href="#" class="btn-ghost" style="font-size:0.75rem; padding:0.65rem 1.3rem;">All projects &#8594;</a>
+  </div>
+  <div class="projects-grid">
+    <a href="#" class="proj-card tall fade-up">
+      <div class="proj-img ib-1">&#128218;<span class="proj-img-label">Case study</span></div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">Fintech</span><span class="ptag">Mobile</span><span class="ptag">Research</span></div>
+        <div class="proj-title">Redesigning onboarding for a banking app — drop-off down 40%</div>
+        <div class="proj-desc">Deep research, journey mapping, and 14 prototype iterations to transform a painful signup into a confidence-building welcome experience.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2024</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="#" class="proj-card fade-up">
+      <div class="proj-img ib-2">&#128722;</div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">E-commerce</span><span class="ptag">Web</span></div>
+        <div class="proj-title">Checkout redesign — +22% conversions</div>
+        <div class="proj-desc">Collapsed a 7-step checkout to 3 screens without losing trust signals.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2024</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="#" class="proj-card fade-up">
+      <div class="proj-img ib-3">&#128202;</div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">B2B SaaS</span><span class="ptag">Dashboard</span></div>
+        <div class="proj-title">Analytics dashboard for non-technical users</div>
+        <div class="proj-desc">Made complex data legible — without dumbing it down — for a 50k-user platform.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2023</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="#" class="proj-card fade-up">
+      <div class="proj-img ib-4">&#127973;</div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">Healthcare</span><span class="ptag">A11y</span></div>
+        <div class="proj-title">Patient portal WCAG 2.1 AA redesign</div>
+        <div class="proj-desc">Inclusive redesign serving 200k+ patients across all abilities and devices.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2023</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="#" class="proj-card tall fade-up">
+      <div class="proj-img ib-5">&#128736;<span class="proj-img-label">Case study</span></div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">Design System</span><span class="ptag">Figma</span><span class="ptag">Multi-platform</span></div>
+        <div class="proj-title">Building a design system for a 50-person org from scratch</div>
+        <div class="proj-desc">200+ components, token-based, covering 4 products. Cut handoff time in half and unified brand across every touchpoint.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2023</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="#" class="proj-card fade-up">
+      <div class="proj-img ib-6">&#127925;</div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">Consumer</span><span class="ptag">Android</span></div>
+        <div class="proj-title">Music discovery app for indie artists</div>
+        <div class="proj-desc">Zero to launch in 10 weeks. Concept, research, and full UX for a niche streaming platform.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2022</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+  </div>
+</section>
+
+<section class="section fade-up" id="about">
+  <div class="section-label">02 &mdash; About</div>
+  <div class="about-wrap" style="margin-top: 3rem;">
+    <div class="about-photo"><span class="about-photo-text">Your photo here</span></div>
+    <div>
+      <h2 class="about-tagline">Hi, I'm Melissa — I design with <em>empathy</em> and ship with confidence.</h2>
+      <p class="about-bio">I'm a UX designer with a background in cognitive psychology and a deep love for research. I believe the best design is invisible — it just feels right. I specialize in discovery, systems thinking, and making complicated things feel simple.</p>
+      <p class="about-bio">When I'm not pushing pixels in Figma, I'm running user interviews, facilitating design sprints, or convincing developers that just a few more pixels of breathing room really does matter.</p>
+      <div class="skills-grid">
+        <span class="skill">User Research</span>
+        <span class="skill">Figma</span>
+        <span class="skill">Prototyping</span>
+        <span class="skill">Design Systems</span>
+        <span class="skill">Usability Testing</span>
+        <span class="skill">Journey Mapping</span>
+        <span class="skill">Information Architecture</span>
+        <span class="skill">Accessibility</span>
+        <span class="skill">Design Sprints</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section fade-up" id="process">
+  <div class="section-head">
+    <div>
+      <div class="section-label">03 &mdash; Process</div>
+      <h2 class="section-title">How I <em>work</em></h2>
+    </div>
+  </div>
+  <div class="process-steps">
+    <div class="step"><div class="step-num">01 / Discover</div><div class="step-title">Discover</div><div class="step-desc">User interviews, competitive analysis, and stakeholder alignment to understand the real problem.</div></div>
+    <div class="step"><div class="step-num">02 / Define</div><div class="step-title">Define</div><div class="step-desc">Synthesizing research into clear insights, personas, and a focused problem statement.</div></div>
+    <div class="step"><div class="step-num">03 / Design</div><div class="step-title">Design</div><div class="step-desc">Sketches, wireframes, and high-fidelity prototypes — iterated fast and tested often.</div></div>
+    <div class="step"><div class="step-num">04 / Deliver</div><div class="step-title">Deliver</div><div class="step-desc">Developer handoff, QA support, and measuring impact after launch.</div></div>
+  </div>
+</section>
+
+<div class="cta-banner fade-up" id="contact">
+  <div>
+    <div class="cta-mono">Let's make something great</div>
+    <div class="cta-title">Got a project?<br><em>Let's talk.</em></div>
+  </div>
+  <div class="cta-actions">
+    <a href="mailto:hello@melissa.design" class="btn-accent">Send me an email</a>
+    <a href="https://linkedin.com" class="btn-ghost-dark">LinkedIn &#8599;</a>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-copy">&#169; 2025 Melissa</span>
+  <span class="footer-logo">M.</span>
+  <div class="footer-links">
+    <a href="#">Dribbble</a>
+    <a href="#">Behance</a>
+    <a href="#">Resume</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+  });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
 
