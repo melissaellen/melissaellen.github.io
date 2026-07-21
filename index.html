@@ -177,6 +177,8 @@
   .proj-card.tall { grid-row: span 2; }
 
   .proj-img {
+    background-position: center !important;
+    background-size: cover !important;
     width: 100%; min-height: 180px;
     display: flex; align-items: center; justify-content: center;
     font-size: 3rem; border-bottom: 1px solid var(--border);
@@ -213,12 +215,12 @@
   .proj-arrow { font-size: 0.85rem; color: var(--muted); transition: color 0.2s, transform 0.2s; }
   .proj-card:hover .proj-arrow { color: var(--accent); transform: translateX(3px); }
 
-  .ib-1 { background: #14121C; }
-  .ib-2 { background: #1A1212; }
-  .ib-3 { background: #101A17; }
-  .ib-4 { background: #101520; }
-  .ib-5 { background: #1C1418; }
-  .ib-6 { background: #181614; }
+  .ib-1 { background: #14121C; background-image: url('imgs/wileyx-1-background.jpg'); }
+  .ib-2 { background: #1A1212; background-image: url('imgs/wileyx-2-pdp-background.jpg'); }
+  .ib-3 { background: #101A17; background-image: url('imgs/milwaukee-background.jpg'); }
+  .ib-4 { background: #101520; background-image: url('imgs/revsavvy-background.jpg'); }
+  .ib-5 { background: #1C1418; background-image: url('imgs/sitf-background.jpg');}
+  .ib-6 { background: #181614; background-image: url('imgs/bioquell-background.jpg');}
 
   .about-wrap { display: grid; grid-template-columns: 320px 1fr; gap: 5rem; align-items: start; }
   .about-photo {
@@ -357,10 +359,10 @@
   </div>
   <div class="hero-right">
     <div>
-      <div class="stat-row"><span class="stat-label">Years of experience</span><span class="stat-num">5+</span></div>
+      <div class="stat-row"><span class="stat-label">Years of experience</span><span class="stat-num">8+</span></div>
       <div class="stat-row"><span class="stat-label">Projects shipped</span><span class="stat-num">30+</span></div>
       <div class="stat-row"><span class="stat-label">Clients served</span><span class="stat-num">12</span></div>
-      <div class="stat-row"><span class="stat-label">Based in</span><span class="stat-num" style="font-size:1.1rem;">[Your City]</span></div>
+      <div class="stat-row"><span class="stat-label">Based in</span><span class="stat-num" style="font-size:1.1rem;">Chicago, IL</span></div>
     </div>
     <div class="avail-badge"><span class="avail-dot"></span> Available for new projects</div>
   </div>
@@ -393,62 +395,62 @@
       <div class="section-label">01 &mdash; Work</div>
       <h2 class="section-title">Selected <em>projects</em></h2>
     </div>
-    <a href="#" class="btn-ghost" style="font-size:0.75rem; padding:0.65rem 1.3rem;">All projects &#8594;</a>
+    <!--<a href="#" class="btn-ghost" style="font-size:0.75rem; padding:0.65rem 1.3rem;">All projects &#8594;</a>--->
   </div>
   <div class="projects-grid">
-    <a href="#" class="proj-card tall fade-up">
-      <div class="proj-img ib-1">&#128218;<span class="proj-img-label">Case study</span></div>
+    <a href="https://wileyx.com" target="_blank" class="proj-card tall fade-up">
+      <div class="proj-img ib-1"><span class="proj-img-label">Redesign</span></div>
       <div class="proj-body">
-        <div class="proj-tags"><span class="ptag">Fintech</span><span class="ptag">Mobile</span><span class="ptag">Research</span></div>
-        <div class="proj-title">Redesigning onboarding for a banking app — drop-off down 40%</div>
-        <div class="proj-desc">Deep research, journey mapping, and 14 prototype iterations to transform a painful signup into a confidence-building welcome experience.</div>
+        <div class="proj-tags"><span class="ptag">Ecom</span><span class="ptag">Mobile</span><span class="ptag">Research</span></div>
+        <div class="proj-title">Redesigning e-commerce homepage</div>
+        <div class="proj-desc">Deep research, journey mapping, and 14 prototype iterations to transform a slow-to-engage webpage into a shopper's dream.</div>
       </div>
-      <div class="proj-footer"><span class="proj-year">2024</span><span class="proj-arrow">&#8594;</span></div>
+      <div class="proj-footer"><span class="proj-year">2025</span><span class="proj-arrow">&#8594;</span></div>
     </a>
-    <a href="#" class="proj-card fade-up">
-      <div class="proj-img ib-2">&#128722;</div>
+    <a href="https://www.wileyx.com/products/wx-alpine-acalp02/" target="_blank" class="proj-card fade-up">
+      <div class="proj-img ib-2"></div>
       <div class="proj-body">
         <div class="proj-tags"><span class="ptag">E-commerce</span><span class="ptag">Web</span></div>
-        <div class="proj-title">Checkout redesign — +22% conversions</div>
-        <div class="proj-desc">Collapsed a 7-step checkout to 3 screens without losing trust signals.</div>
+        <div class="proj-title">PDP redesign — +22% conversions</div>
+        <div class="proj-desc">Updated a PDP with FIGMA to increase conversions.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2025-2026</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="https://www.behance.net/gallery/245286997/Entire-Brand-Package" target="_blank" class="proj-card fade-up">
+      <div class="proj-img ib-3"></div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">Design</span><span class="ptag">Client Research</span></div>
+        <div class="proj-title">Entire Brand Package for Client</div>
+        <div class="proj-desc">Made complete brand story for client, logo and webpage. </div>
       </div>
       <div class="proj-footer"><span class="proj-year">2024</span><span class="proj-arrow">&#8594;</span></div>
     </a>
-    <a href="#" class="proj-card fade-up">
-      <div class="proj-img ib-3">&#128202;</div>
+    <a href="https://getrevsavvy.com" target="_blank" class="proj-card fade-up">
+      <div class="proj-img ib-4"></div>
       <div class="proj-body">
-        <div class="proj-tags"><span class="ptag">B2B SaaS</span><span class="ptag">Dashboard</span></div>
-        <div class="proj-title">Analytics dashboard for non-technical users</div>
-        <div class="proj-desc">Made complex data legible — without dumbing it down — for a 50k-user platform.</div>
+        <div class="proj-tags"><span class="ptag">Healthcare</span><span class="ptag">Web</span></div>
+        <div class="proj-title">Brand Package and ROI Calculator</div>
+        <div class="proj-desc">Inclusive redesign serving many patients across all abilities and devices.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2024-Current</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="https://stayinthefight.com" target="_blank" class="proj-card tall fade-up">
+      <div class="proj-img ib-5"><span class="proj-img-label">Redesign</span></div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">Design</span><span class="ptag">Wordpress</span></div>
+        <div class="proj-title">Redesign website and rebrand logo</div>
+        <div class="proj-desc">Create a website prioritizing user experience.</div>
+      </div>
+      <div class="proj-footer"><span class="proj-year">2026</span><span class="proj-arrow">&#8594;</span></div>
+    </a>
+    <a href="https://bioquell.com" target="_blank" class="proj-card fade-up">
+      <div class="proj-img ib-6"></div>
+      <div class="proj-body">
+        <div class="proj-tags"><span class="ptag">Ecom</span><span class="ptag">UX</span></div>
+        <div class="proj-title">Healthcare website</div>
+        <div class="proj-desc">Redesign and develop website to include new brand look and feel.</div>
       </div>
       <div class="proj-footer"><span class="proj-year">2023</span><span class="proj-arrow">&#8594;</span></div>
-    </a>
-    <a href="#" class="proj-card fade-up">
-      <div class="proj-img ib-4">&#127973;</div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="ptag">Healthcare</span><span class="ptag">A11y</span></div>
-        <div class="proj-title">Patient portal WCAG 2.1 AA redesign</div>
-        <div class="proj-desc">Inclusive redesign serving 200k+ patients across all abilities and devices.</div>
-      </div>
-      <div class="proj-footer"><span class="proj-year">2023</span><span class="proj-arrow">&#8594;</span></div>
-    </a>
-    <a href="#" class="proj-card tall fade-up">
-      <div class="proj-img ib-5">&#128736;<span class="proj-img-label">Case study</span></div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="ptag">Design System</span><span class="ptag">Figma</span><span class="ptag">Multi-platform</span></div>
-        <div class="proj-title">Building a design system for a 50-person org from scratch</div>
-        <div class="proj-desc">200+ components, token-based, covering 4 products. Cut handoff time in half and unified brand across every touchpoint.</div>
-      </div>
-      <div class="proj-footer"><span class="proj-year">2023</span><span class="proj-arrow">&#8594;</span></div>
-    </a>
-    <a href="#" class="proj-card fade-up">
-      <div class="proj-img ib-6">&#127925;</div>
-      <div class="proj-body">
-        <div class="proj-tags"><span class="ptag">Consumer</span><span class="ptag">Android</span></div>
-        <div class="proj-title">Music discovery app for indie artists</div>
-        <div class="proj-desc">Zero to launch in 10 weeks. Concept, research, and full UX for a niche streaming platform.</div>
-      </div>
-      <div class="proj-footer"><span class="proj-year">2022</span><span class="proj-arrow">&#8594;</span></div>
     </a>
   </div>
 </section>
@@ -456,10 +458,10 @@
 <section class="section fade-up" id="about">
   <div class="section-label">02 &mdash; About</div>
   <div class="about-wrap" style="margin-top: 3rem;">
-    <div class="about-photo"><span class="about-photo-text">Your photo here</span></div>
+    <div class="about-photo"><img src="imgs/about-photo.jpg"></div>
     <div>
-      <h2 class="about-tagline">Hi, I'm Melissa — I design with <em>empathy</em> and ship with confidence.</h2>
-      <p class="about-bio">I'm a UX designer with a background in cognitive psychology and a deep love for research. I believe the best design is invisible — it just feels right. I specialize in discovery, systems thinking, and making complicated things feel simple.</p>
+      <h2 class="about-tagline">Hi, I'm Melissa — I design with <em>creativity</em> and ship with confidence.</h2>
+      <p class="about-bio">I'm a front-end developer with a background in design and a deep love for research. I believe the best design is invisible — it just feels right. I specialize in discovery and making complicated things feel simple.</p>
       <p class="about-bio">When I'm not pushing pixels in Figma, I'm running user interviews, facilitating design sprints, or convincing developers that just a few more pixels of breathing room really does matter.</p>
       <div class="skills-grid">
         <span class="skill">User Research</span>
@@ -485,9 +487,9 @@
   </div>
   <div class="process-steps">
     <div class="step"><div class="step-num">01 / Discover</div><div class="step-title">Discover</div><div class="step-desc">User interviews, competitive analysis, and stakeholder alignment to understand the real problem.</div></div>
-    <div class="step"><div class="step-num">02 / Define</div><div class="step-title">Define</div><div class="step-desc">Synthesizing research into clear insights, personas, and a focused problem statement.</div></div>
-    <div class="step"><div class="step-num">03 / Design</div><div class="step-title">Design</div><div class="step-desc">Sketches, wireframes, and high-fidelity prototypes — iterated fast and tested often.</div></div>
-    <div class="step"><div class="step-num">04 / Deliver</div><div class="step-title">Deliver</div><div class="step-desc">Developer handoff, QA support, and measuring impact after launch.</div></div>
+    <div class="step"><div class="step-num">02 / Design</div><div class="step-title">Design</div><div class="step-desc">Sketches, wireframes, and high-fidelity prototypes — iterated fast and tested often.</div></div>
+    <div class="step"><div class="step-num">03 / Develop</div><div class="step-title">Develop</div><div class="step-desc">Start development of the project, test, and meet with the client as needed to ensure needs are being met.</div></div>
+    <div class="step"><div class="step-num">04 / Deliver</div><div class="step-title">Deliver</div><div class="step-desc">Developer handoff (if needed), QA support, and measuring impact after launch.</div></div>
   </div>
 </section>
 
@@ -497,18 +499,17 @@
     <div class="cta-title">Got a project?<br><em>Let's talk.</em></div>
   </div>
   <div class="cta-actions">
-    <a href="mailto:hello@melissa.design" class="btn-accent">Send me an email</a>
-    <a href="https://linkedin.com" class="btn-ghost-dark">LinkedIn &#8599;</a>
+    <a href="mailto:hello.melissadurkin@gmail.com" class="btn-accent" target="_blank">Send me an email</a>
+    <a href="https://www.linkedin.com/in/ciaomelissa/" target="_blank" class="btn-ghost-dark">LinkedIn &#8599;</a>
   </div>
 </div>
 
 <footer>
-  <span class="footer-copy">&#169; 2025 Melissa</span>
+  <span class="footer-copy">&#169; 2026 Melissa</span>
   <span class="footer-logo">M.</span>
   <div class="footer-links">
-    <a href="#">Dribbble</a>
-    <a href="#">Behance</a>
-    <a href="#">Resume</a>
+    <a href="https://www.linkedin.com/in/ciaomelissa/" target="_blank">LinkedIn</a>
+    <a href="imgs/Resume-FE-2026.jpg" target="_blank">Resume</a>
   </div>
 </footer>
 
@@ -522,4 +523,3 @@ document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
-
